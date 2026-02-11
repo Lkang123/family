@@ -31,33 +31,33 @@ export default function AboutPage() {
     );
   }
   return (
-    <div className="min-h-screen bg-warm-50">
+    <div className="min-h-screen bg-warm-50 pb-safe-bottom">
       <Header />
 
-      <section className="max-w-3xl mx-auto px-4 py-12">
+      <section className="max-w-3xl mx-auto px-4 py-8 md:py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8 md:mb-12"
         >
           <h1
-            className="text-3xl md:text-4xl font-bold text-warm-900 mb-3"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-warm-900 mb-2 md:mb-3"
             style={{ fontFamily: "var(--font-serif-sc)" }}
           >
             关于时光记
           </h1>
-          <p className="text-warm-500">为什么我们要记录家庭的故事</p>
+          <p className="text-warm-500 text-sm md:text-base">为什么我们要记录家庭的故事</p>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-warm-100 mb-8"
+          className="bg-white rounded-2xl md:rounded-3xl p-6 md:p-12 shadow-sm border border-warm-100 mb-6 md:mb-8"
         >
           <div
-            className="text-warm-700 text-lg leading-loose space-y-6"
+            className="text-warm-700 text-base md:text-lg leading-loose space-y-4 md:space-y-6"
             style={{ fontFamily: "var(--font-serif-sc)" }}
           >
             <p>
@@ -81,7 +81,7 @@ export default function AboutPage() {
         </motion.div>
 
         {/* 核心理念 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <div className="grid grid-cols-2 gap-3 md:gap-4 mb-6 md:mb-8">
           {[
             {
               icon: Clock,
@@ -109,9 +109,9 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
-              className="bg-white rounded-2xl p-6 shadow-sm border border-warm-100"
+              className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 shadow-sm border border-warm-100"
             >
-              <item.icon size={24} className="text-accent mb-3" />
+              <item.icon size={20} className="text-accent mb-2 md:mb-3 md:[&]:w-6 md:[&]:h-6" />
               <h3
                 className="font-bold text-warm-800 mb-1"
                 style={{ fontFamily: "var(--font-serif-sc)" }}
@@ -128,7 +128,7 @@ export default function AboutPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="bg-warm-800 rounded-3xl p-8 md:p-12 text-center"
+          className="bg-warm-800 rounded-2xl md:rounded-3xl p-6 md:p-12 text-center"
         >
           <h2
             className="text-xl font-bold text-warm-100 mb-6"

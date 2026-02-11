@@ -57,12 +57,12 @@ export default function Home() {
   let eventIndex = 0;
 
   return (
-    <div className="min-h-screen bg-warm-50">
+    <div className="min-h-screen bg-warm-50 pb-safe-bottom">
       <Header />
       <HeroSection />
 
       {/* 时间轴 */}
-      <section className="relative max-w-5xl mx-auto px-4 pb-16">
+      <section className="relative max-w-5xl mx-auto px-3 md:px-4 pb-8 md:pb-16">
         <div className="timeline-line" />
 
         {yearGroups.map((group) => (
@@ -83,8 +83,8 @@ export default function Home() {
         ))}
 
         {/* 时间轴终点 */}
-        <div className="relative flex justify-center mt-8">
-          <div className="bg-accent text-white px-6 py-3 rounded-full text-sm font-medium shadow-lg z-10">
+        <div className="relative flex justify-center mt-4 md:mt-8">
+          <div className="bg-accent text-white px-5 py-2.5 md:px-6 md:py-3 rounded-full text-xs md:text-sm font-medium shadow-lg z-10">
             故事还在继续...
           </div>
         </div>

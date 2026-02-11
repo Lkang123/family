@@ -48,26 +48,26 @@ export default function MembersPage() {
     );
   }
   return (
-    <div className="min-h-screen bg-warm-50">
+    <div className="min-h-screen bg-warm-50 pb-safe-bottom">
       <Header />
 
-      <section className="max-w-5xl mx-auto px-4 py-12">
+      <section className="max-w-5xl mx-auto px-4 py-8 md:py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8 md:mb-12"
         >
           <h1
-            className="text-3xl md:text-4xl font-bold text-warm-900 mb-3"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-warm-900 mb-2 md:mb-3"
             style={{ fontFamily: "var(--font-serif-sc)" }}
           >
             我们的家人
           </h1>
-          <p className="text-warm-500">每一位家人，都是故事里不可缺少的主角</p>
+          <p className="text-warm-500 text-sm md:text-base">每一位家人，都是故事里不可缺少的主角</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {members.map((member, i) => {
             const memberEvents = getMemberEvents(member.id);
             return (
@@ -76,7 +76,7 @@ export default function MembersPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-white rounded-2xl p-6 shadow-sm border border-warm-100 hover:shadow-md hover:border-warm-200 transition-all group"
+                className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 shadow-sm border border-warm-100 hover:shadow-md hover:border-warm-200 transition-all group"
               >
                 {/* 头像 */}
                 <div className="flex items-center gap-4 mb-4">

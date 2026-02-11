@@ -75,14 +75,14 @@ export default function EventDetailPage() {
   const nextEvent = eventIndex < allEvents.length - 1 ? allEvents[eventIndex + 1] : null;
 
   return (
-    <div className="min-h-screen bg-warm-50">
+    <div className="min-h-screen bg-warm-50 pb-safe-bottom">
       <Header />
 
-      <article className="max-w-3xl mx-auto px-4 py-12">
+      <article className="max-w-3xl mx-auto px-4 py-6 md:py-12">
         {/* 返回 */}
         <Link
           href="/"
-          className="inline-flex items-center gap-1 text-sm text-warm-500 hover:text-accent transition-colors mb-8"
+          className="inline-flex items-center gap-1 text-sm text-warm-500 hover:text-accent transition-colors mb-4 md:mb-8"
         >
           <ChevronLeft size={16} />
           返回时光轴
@@ -94,13 +94,14 @@ export default function EventDetailPage() {
           transition={{ duration: 0.6 }}
         >
           {/* 标题区 */}
-          <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-warm-100 mb-8">
+          <div className="bg-white rounded-2xl md:rounded-3xl p-5 md:p-12 shadow-sm border border-warm-100 mb-6 md:mb-8">
             <div className="flex items-center gap-3 mb-6">
               <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-md"
+                className="w-11 h-11 md:w-14 md:h-14 rounded-xl md:rounded-2xl flex items-center justify-center shadow-md"
                 style={{ backgroundColor: color }}
               >
-                <Icon size={28} className="text-white" />
+                <Icon size={20} className="text-white md:hidden" />
+                <Icon size={28} className="text-white hidden md:block" />
               </div>
               <div>
                 <span
@@ -114,14 +115,14 @@ export default function EventDetailPage() {
             </div>
 
             <h1
-              className="text-3xl md:text-4xl font-bold text-warm-900 mb-6 leading-tight"
+              className="text-2xl sm:text-3xl md:text-4xl font-bold text-warm-900 mb-4 md:mb-6 leading-tight"
               style={{ fontFamily: "var(--font-serif-sc)" }}
             >
               {event.title}
             </h1>
 
             <div className="prose prose-warm max-w-none">
-              <p className="text-warm-700 text-lg leading-loose">
+              <p className="text-warm-700 text-base md:text-lg leading-loose">
                 {event.description}
               </p>
             </div>
@@ -171,17 +172,17 @@ export default function EventDetailPage() {
           </div>
 
           {/* 上一篇/下一篇 */}
-          <div className="flex gap-4">
+          <div className="flex gap-3 md:gap-4">
             {prevEvent ? (
               <Link
                 href={`/event/${prevEvent.id}`}
-                className="flex-1 group bg-white rounded-2xl p-5 shadow-sm border border-warm-100 hover:border-warm-200 hover:shadow-md transition-all"
+                className="flex-1 group bg-white rounded-xl md:rounded-2xl p-3.5 md:p-5 shadow-sm border border-warm-100 hover:border-warm-200 hover:shadow-md transition-all"
               >
-                <div className="flex items-center gap-2 text-xs text-warm-400 mb-1">
+                <div className="flex items-center gap-2 text-[10px] md:text-xs text-warm-400 mb-1">
                   <ArrowLeft size={12} />
                   <span>上一个故事</span>
                 </div>
-                <p className="text-sm font-medium text-warm-700 group-hover:text-accent transition-colors truncate">
+                <p className="text-xs md:text-sm font-medium text-warm-700 group-hover:text-accent transition-colors truncate">
                   {prevEvent.title}
                 </p>
               </Link>
@@ -191,13 +192,13 @@ export default function EventDetailPage() {
             {nextEvent ? (
               <Link
                 href={`/event/${nextEvent.id}`}
-                className="flex-1 group bg-white rounded-2xl p-5 shadow-sm border border-warm-100 hover:border-warm-200 hover:shadow-md transition-all text-right"
+                className="flex-1 group bg-white rounded-xl md:rounded-2xl p-3.5 md:p-5 shadow-sm border border-warm-100 hover:border-warm-200 hover:shadow-md transition-all text-right"
               >
-                <div className="flex items-center justify-end gap-2 text-xs text-warm-400 mb-1">
+                <div className="flex items-center justify-end gap-2 text-[10px] md:text-xs text-warm-400 mb-1">
                   <span>下一个故事</span>
                   <ArrowRight size={12} />
                 </div>
-                <p className="text-sm font-medium text-warm-700 group-hover:text-accent transition-colors truncate">
+                <p className="text-xs md:text-sm font-medium text-warm-700 group-hover:text-accent transition-colors truncate">
                   {nextEvent.title}
                 </p>
               </Link>
