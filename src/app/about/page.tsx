@@ -17,7 +17,7 @@ export default function AboutPage() {
       const res = await fetch("/api/mottos");
       if (!active) return;
       const data = await res.json();
-      setMottos(data.mottos || []);
+      setMottos(Array.isArray(data) ? data : data.mottos || []);
       setLoading(false);
     })();
     return () => { active = false; };

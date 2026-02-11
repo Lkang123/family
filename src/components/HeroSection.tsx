@@ -13,7 +13,8 @@ export default function HeroSection() {
       const res = await fetch("/api/mottos");
       if (!active) return;
       const data = await res.json();
-      if (data.mottos?.length) setMotto(data.mottos[0]);
+      const arr = Array.isArray(data) ? data : data.mottos || [];
+      if (arr.length) setMotto(arr[0]);
     })();
     return () => { active = false; };
   }, []);
