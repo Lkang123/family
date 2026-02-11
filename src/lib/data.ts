@@ -3,7 +3,7 @@ import path from "path";
 import type { FamilyEvent, FamilyMember, FamilyMotto } from "@/data/types";
 
 const DATA_DIR = path.join(process.cwd(), "src", "data");
-const BACKUP_DIR = path.join(process.cwd(), "backups");
+const BACKUP_DIR = path.join(DATA_DIR, "backups");
 
 function ensureDir(dir: string) {
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
