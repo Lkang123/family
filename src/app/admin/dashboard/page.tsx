@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import {
   CalendarDays, Users, Quote, Plus, Pencil, Trash2,
   Save, X, LogOut, Home, ChevronDown, ImagePlus, Loader2,
+  AlertTriangle,
 } from "lucide-react";
 import type { FamilyEvent, FamilyMember, FamilyMotto } from "@/data/types";
 
@@ -45,6 +46,20 @@ export default function AdminDashboard() {
   const [showEventForm, setShowEventForm] = useState(false);
   const [showMemberForm, setShowMemberForm] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [confirmDialog, setConfirmDialog] = useState<{
+    open: boolean;
+    title: string;
+    message: string;
+    onConfirm: () => void;
+  }>({ open: false, title: "", message: "", onConfirm: () => {} });
+
+  const showConfirm = (title: string, message: string, onConfirm: () => void) => {
+    setConfirmDialog({ open: true, title, message, onConfirm });
+  };
+
+  const closeConfirm = () => {
+    setConfirmDialog({ open: false, title: "", message: "", onConfirm: () => {} });
+  };
 
   const fetchData = useCallback(async () => {
     setLoading(true);
@@ -174,15 +189,17 @@ export default function AdminDashboard() {
     fetchData();
   };
 
-  const deleteEvent = async (id: string) => {
-    if (!confirm("确定删除这个事件吗？")) return;
-    await fetch("/api/events", {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id }),
+  const deleteEvent = (id: string) => {
+    showConfirm("删除事件", "确定要删除这个事件吗？此操作不可撤销。", async () => {
+      await fetch("/api/events", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
+      flash("事件已删除 ✓");
+      fetchData();
+      closeConfirm();
     });
-    flash("事件已删除 ✓");
-    fetchData();
   };
 
   // ====== Member CRUD ======
@@ -217,15 +234,17 @@ export default function AdminDashboard() {
     fetchData();
   };
 
-  const deleteMember = async (id: string) => {
-    if (!confirm("确定删除这个成员吗？")) return;
-    await fetch("/api/members", {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id }),
+  const deleteMember = (id: string) => {
+    showConfirm("删除成员", "确定要删除这个家人吗？此操作不可撤销。", async () => {
+      await fetch("/api/members", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
+      flash("成员已删除 ✓");
+      fetchData();
+      closeConfirm();
     });
-    flash("成员已删除 ✓");
-    fetchData();
   };
 
   // ====== Motto CRUD ======
@@ -241,15 +260,17 @@ export default function AdminDashboard() {
     fetchData();
   };
 
-  const deleteMotto = async (index: number) => {
-    if (!confirm("确定删除这条格言吗？")) return;
-    await fetch("/api/mottos", {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ index }),
+  const deleteMotto = (index: number) => {
+    showConfirm("删除格言", "确定要删除这条格言吗？此操作不可撤销。", async () => {
+      await fetch("/api/mottos", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ index }),
+      });
+      flash("格言已删除 ✓");
+      fetchData();
+      closeConfirm();
     });
-    flash("格言已删除 ✓");
-    fetchData();
   };
 
   if (loading) {
@@ -294,6 +315,38 @@ export default function AdminDashboard() {
       {msg && (
         <div className="fixed top-16 left-1/2 -translate-x-1/2 z-50 bg-green-600 text-white px-6 py-2 rounded-full text-sm shadow-lg animate-bounce">
           {msg}
+        </div>
+      )}
+
+      {/* 自定义确认弹窗 */}
+      {confirmDialog.open && (
+        <div className="fixed inset-0 z-[60] bg-black/40 flex items-center justify-center p-4" onClick={closeConfirm}>
+          <div
+            className="bg-white rounded-2xl w-full max-w-sm p-6 shadow-xl animate-in fade-in zoom-in-95"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
+                <AlertTriangle size={20} className="text-red-500" />
+              </div>
+              <h3 className="text-lg font-bold text-warm-800">{confirmDialog.title}</h3>
+            </div>
+            <p className="text-sm text-warm-500 mb-6 pl-[52px]">{confirmDialog.message}</p>
+            <div className="flex gap-3 justify-end">
+              <button
+                onClick={closeConfirm}
+                className="px-5 py-2 rounded-xl border border-warm-200 text-warm-500 hover:bg-warm-50 text-sm font-medium transition-all"
+              >
+                取消
+              </button>
+              <button
+                onClick={confirmDialog.onConfirm}
+                className="px-5 py-2 rounded-xl bg-red-500 text-white text-sm font-medium hover:bg-red-600 transition-all"
+              >
+                确定删除
+              </button>
+            </div>
+          </div>
         </div>
       )}
 
