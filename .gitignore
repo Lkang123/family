@@ -36,6 +36,14 @@ yarn-error.log*
 # vercel
 .vercel
 
+# backups & uploads
+/backups/
+/public/uploads/*
+!/public/uploads/.gitkeep
+/data/
+/uploads/
+fengbao.tar.gz
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

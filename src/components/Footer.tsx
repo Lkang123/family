@@ -1,0 +1,16 @@
+import { Heart } from "lucide-react";
+
+export default function Footer() {
+  return (
+    <footer className="border-t border-warm-200 py-8 mt-16">
+      <div className="max-w-5xl mx-auto px-4 text-center">
+        <p className="text-warm-400 text-sm flex items-center justify-center gap-1">
+          用 <Heart size={14} className="text-accent fill-accent" /> 记录家的每一刻
+        </p>
+        <p className="text-warm-300 text-xs mt-2">
+          家庭年鉴 · 时光记 © {new Date().getFullYear()}
+        </p>
+      </div>
+    </footer>
+  );
+}

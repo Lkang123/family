@@ -1,0 +1,245 @@
+[
+  {
+    "id": "evt-1970-wedding",
+    "title": "爷爷奶奶结婚",
+    "date": "1970-10-01",
+    "year": 1970,
+    "category": "milestone",
+    "description": "在那个物资匮乏的年代，爷爷奶奶的婚礼简朴而温馨。一辆自行车、两床新被子、三桌酒席，便是他们爱情最初的模样。村里的老槐树下，他们许下了一生的承诺。",
+    "photos": [
+      "/uploads/1770790299802-lg3xnp.jpg"
+    ],
+    "memberIds": [
+      "grandpa",
+      "grandma"
+    ],
+    "icon": "Heart"
+  },
+  {
+    "id": "evt-1972-father-born",
+    "title": "爸爸出生",
+    "date": "1972-11-08",
+    "year": 1972,
+    "category": "milestone",
+    "description": "初冬的清晨，家里迎来了第一个孩子。爷爷高兴得在院子里放了一挂鞭炮，奶奶说那天的阳光特别暖。",
+    "photos": [],
+    "memberIds": [
+      "grandpa",
+      "grandma",
+      "father"
+    ],
+    "icon": "Baby"
+  },
+  {
+    "id": "evt-1990-college",
+    "title": "爸爸考上大学",
+    "date": "1990-07-15",
+    "year": 1990,
+    "category": "achievement",
+    "description": "那个年代，从小镇考上大学是件轰动全村的大事。爷爷骑着自行车，把录取通知书给每家每户都看了一遍。这是我们家第一个大学生。",
+    "photos": [],
+    "memberIds": [
+      "father",
+      "grandpa",
+      "grandma"
+    ],
+    "icon": "GraduationCap"
+  },
+  {
+    "id": "evt-1998-parents-wedding",
+    "title": "爸爸妈妈结婚",
+    "date": "1998-05-01",
+    "year": 1998,
+    "category": "milestone",
+    "description": "五月的阳光下，爸爸妈妈在老家的大院里举办了婚礼。妈妈穿着红色旗袍，爸爸西装笔挺。爷爷奶奶笑得合不拢嘴，说这是他们最开心的一天。",
+    "photos": [],
+    "memberIds": [
+      "father",
+      "mother",
+      "grandpa",
+      "grandma"
+    ],
+    "icon": "Heart"
+  },
+  {
+    "id": "evt-2000-me-born",
+    "title": "我出生了",
+    "date": "2000-01-01",
+    "year": 2000,
+    "category": "milestone",
+    "description": "千禧年的第一天，伴随着新世纪的钟声，我来到了这个世界。爸爸说我是新千年最好的礼物，妈妈说我哭声特别响亮。",
+    "photos": [],
+    "memberIds": [
+      "me",
+      "father",
+      "mother"
+    ],
+    "icon": "Baby"
+  },
+  {
+    "id": "evt-2003-sister-born",
+    "title": "妹妹出生",
+    "date": "2003-07-14",
+    "year": 2003,
+    "category": "milestone",
+    "description": "盛夏的午后，家里又多了一个小成员。三岁的我趴在婴儿床边，好奇地看着这个皱巴巴的小家伙，不知道她以后会成为我最好的朋友。",
+    "photos": [],
+    "memberIds": [
+      "sister",
+      "me",
+      "father",
+      "mother"
+    ],
+    "icon": "Baby"
+  },
+  {
+    "id": "evt-2005-new-house",
+    "title": "搬进新家",
+    "date": "2005-09-01",
+    "year": 2005,
+    "category": "milestone",
+    "description": "爸妈奋斗多年，终于在城里买了自己的房子。搬家那天，全家人忙得满头大汗，但每个人脸上都洋溢着幸福的笑容。奶奶特意煮了一锅红豆粥，说是暖房的好兆头。",
+    "photos": [],
+    "memberIds": [
+      "father",
+      "mother",
+      "me",
+      "sister",
+      "grandpa",
+      "grandma"
+    ],
+    "icon": "Home"
+  },
+  {
+    "id": "evt-2008-olympics",
+    "title": "一起看奥运会",
+    "date": "2008-08-08",
+    "year": 2008,
+    "category": "tradition",
+    "description": "北京奥运会开幕式那晚，全家围坐在电视机前。当李宁在空中奔跑点燃火炬时，爷爷激动地站了起来，我和妹妹兴奋地鼓掌。那个夏天，是属于所有中国人的骄傲。",
+    "photos": [],
+    "memberIds": [
+      "grandpa",
+      "grandma",
+      "father",
+      "mother",
+      "me",
+      "sister"
+    ],
+    "icon": "Star"
+  },
+  {
+    "id": "evt-2012-travel",
+    "title": "第一次全家旅行",
+    "date": "2012-07-20",
+    "year": 2012,
+    "category": "daily",
+    "description": "全家人第一次坐飞机去三亚旅行。爷爷奶奶第一次看到大海，激动得像孩子一样。妹妹在沙滩上堆了一个巨大的城堡，我帮她拍了无数张照片。",
+    "photos": [],
+    "memberIds": [
+      "grandpa",
+      "grandma",
+      "father",
+      "mother",
+      "me",
+      "sister"
+    ],
+    "icon": "Plane"
+  },
+  {
+    "id": "evt-2015-grandpa-retire",
+    "title": "爷爷正式退休",
+    "date": "2015-06-30",
+    "year": 2015,
+    "category": "milestone",
+    "description": "教了一辈子书的爷爷终于退休了。学校给他办了一场简单的欢送会，很多他教过的学生都来了。爷爷说他这辈子最骄傲的事，就是看着学生们一个个有出息。",
+    "photos": [],
+    "memberIds": [
+      "grandpa"
+    ],
+    "icon": "Award"
+  },
+  {
+    "id": "evt-2018-me-college",
+    "title": "我考上大学",
+    "date": "2018-07-25",
+    "year": 2018,
+    "category": "achievement",
+    "description": "查到录取结果的那一刻，妈妈哭了，爸爸假装淡定但偷偷红了眼眶。爷爷说:'又一个大学生！'那天晚上全家去吃了火锅，爸爸破例让我喝了一杯啤酒。",
+    "photos": [],
+    "memberIds": [
+      "me",
+      "father",
+      "mother",
+      "grandpa",
+      "grandma"
+    ],
+    "icon": "GraduationCap"
+  },
+  {
+    "id": "evt-2020-pandemic",
+    "title": "疫情中的温暖",
+    "date": "2020-02-01",
+    "year": 2020,
+    "category": "daily",
+    "description": "疫情让全家人难得地聚在一起度过了一个漫长的春节。妈妈每天变着花样做饭，爸爸教我下象棋，妹妹学会了烤蛋糕。虽然窗外是寒冬，屋内却满是温暖。",
+    "photos": [],
+    "memberIds": [
+      "father",
+      "mother",
+      "me",
+      "sister",
+      "grandpa",
+      "grandma"
+    ],
+    "icon": "Home"
+  },
+  {
+    "id": "evt-2022-first-job",
+    "title": "我的第一份工作",
+    "date": "2022-07-01",
+    "year": 2022,
+    "category": "achievement",
+    "description": "大学毕业后，我拿到了一家科技公司的offer。上班第一天，妈妈起了个大早给我做了我最爱吃的早餐。爸爸送我到地铁站，说了句'好好干'就转身走了，但我知道他很骄傲。",
+    "photos": [],
+    "memberIds": [
+      "me",
+      "father",
+      "mother"
+    ],
+    "icon": "Briefcase"
+  },
+  {
+    "id": "evt-2024-reunion",
+    "title": "金婚纪念 · 全家福",
+    "date": "2024-10-01",
+    "year": 2024,
+    "category": "tradition",
+    "description": "爷爷奶奶结婚五十四年，我们给他们补办了一场金婚庆典。全家人穿上统一的红色衣服，拍了一张正式的全家福。爷爷握着奶奶的手说：'这辈子最对的事，就是娶了你。'",
+    "photos": [],
+    "memberIds": [
+      "grandpa",
+      "grandma",
+      "father",
+      "mother",
+      "me",
+      "sister"
+    ],
+    "icon": "Camera"
+  },
+  {
+    "id": "evt-2025-website",
+    "title": "家庭年鉴网站上线",
+    "date": "2025-02-11",
+    "year": 2025,
+    "category": "achievement",
+    "description": "为了不让这些珍贵的家庭记忆散落在时间里，我决定建一个家庭年鉴网站。把爷爷奶奶的故事、爸爸妈妈的奋斗、我和妹妹的成长，都记录在这里。愿这些故事，温暖每一个翻开它的人。",
+    "photos": [
+      "/uploads/1770789264508-3orrma.jpg"
+    ],
+    "memberIds": [
+      "me"
+    ],
+    "icon": "Globe"
+  }
+]
