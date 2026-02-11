@@ -1,12 +1,35 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import mottoData from "@/data/motto.json";
+import type { FamilyMotto } from "@/data/types";
 import { Heart, BookOpen, Users, Clock } from "lucide-react";
 
 export default function AboutPage() {
+  const [mottos, setMottos] = useState<FamilyMotto[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let active = true;
+    (async () => {
+      const res = await fetch("/api/mottos");
+      if (!active) return;
+      const data = await res.json();
+      setMottos(data.mottos || []);
+      setLoading(false);
+    })();
+    return () => { active = false; };
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-warm-50 flex items-center justify-center">
+        <div className="text-warm-400 animate-pulse text-lg">加载中...</div>
+      </div>
+    );
+  }
   return (
     <div className="min-h-screen bg-warm-50">
       <Header />
@@ -114,7 +137,7 @@ export default function AboutPage() {
             家族格言
           </h2>
           <div className="space-y-6">
-            {mottoData.mottos.map((motto, i) => (
+            {mottos.map((motto: FamilyMotto, i: number) => (
               <div key={i}>
                 <p
                   className="text-warm-100 text-lg md:text-xl italic"

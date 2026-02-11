@@ -1,10 +1,22 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import mottoData from "@/data/motto.json";
+import type { FamilyMotto } from "@/data/types";
 
 export default function HeroSection() {
-  const motto = mottoData.mottos[0];
+  const [motto, setMotto] = useState<FamilyMotto | null>(null);
+
+  useEffect(() => {
+    let active = true;
+    (async () => {
+      const res = await fetch("/api/mottos");
+      if (!active) return;
+      const data = await res.json();
+      if (data.mottos?.length) setMotto(data.mottos[0]);
+    })();
+    return () => { active = false; };
+  }, []);
 
   return (
     <section className="relative overflow-hidden py-20 md:py-32">
@@ -35,20 +47,22 @@ export default function HeroSection() {
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="inline-block bg-white/60 backdrop-blur-sm rounded-2xl px-8 py-4 border border-warm-200"
-        >
-          <p
-            className="text-warm-700 text-lg md:text-xl italic"
-            style={{ fontFamily: "var(--font-serif-sc)" }}
+        {motto && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="inline-block bg-white/60 backdrop-blur-sm rounded-2xl px-8 py-4 border border-warm-200"
           >
-            「{motto.content}」
-          </p>
-          <p className="text-warm-400 text-sm mt-1">—— {motto.source}</p>
-        </motion.div>
+            <p
+              className="text-warm-700 text-lg md:text-xl italic"
+              style={{ fontFamily: "var(--font-serif-sc)" }}
+            >
+              「{motto.content}」
+            </p>
+            <p className="text-warm-400 text-sm mt-1">—— {motto.source}</p>
+          </motion.div>
+        )}
 
         <motion.div
           initial={{ opacity: 0 }}

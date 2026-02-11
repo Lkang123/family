@@ -1,16 +1,12 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import membersData from "@/data/members.json";
-import eventsData from "@/data/events.json";
 import type { FamilyMember, FamilyEvent } from "@/data/types";
 import { Calendar, BookOpen } from "lucide-react";
 import Link from "next/link";
-
-const members = membersData as FamilyMember[];
-const events = eventsData as FamilyEvent[];
 
 function getAge(birthday: string) {
   const birth = new Date(birthday);
@@ -21,11 +17,36 @@ function getAge(birthday: string) {
   return age;
 }
 
-function getMemberEvents(memberId: string) {
-  return events.filter((e) => e.memberIds.includes(memberId));
-}
-
 export default function MembersPage() {
+  const [members, setMembers] = useState<FamilyMember[]>([]);
+  const [events, setEvents] = useState<FamilyEvent[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let active = true;
+    (async () => {
+      const [memRes, evtRes] = await Promise.all([
+        fetch("/api/members"),
+        fetch("/api/events"),
+      ]);
+      if (!active) return;
+      setMembers(await memRes.json());
+      setEvents(await evtRes.json());
+      setLoading(false);
+    })();
+    return () => { active = false; };
+  }, []);
+
+  const getMemberEvents = (memberId: string) =>
+    events.filter((e) => e.memberIds.includes(memberId));
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-warm-50 flex items-center justify-center">
+        <div className="text-warm-400 animate-pulse text-lg">加载中...</div>
+      </div>
+    );
+  }
   return (
     <div className="min-h-screen bg-warm-50">
       <Header />

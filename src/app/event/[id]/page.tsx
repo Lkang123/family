@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -10,13 +11,8 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import eventsData from "@/data/events.json";
-import membersData from "@/data/members.json";
 import type { FamilyEvent, FamilyMember } from "@/data/types";
 import { categoryLabels, categoryColors } from "@/data/types";
-
-const allEvents = (eventsData as FamilyEvent[]).sort((a, b) => a.year - b.year);
-const members = membersData as FamilyMember[];
 
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
   Heart, Baby, GraduationCap, Home, Star, Plane,
@@ -26,6 +22,34 @@ const iconMap: Record<string, React.ComponentType<{ size?: number; className?: s
 export default function EventDetailPage() {
   const params = useParams();
   const eventId = params.id as string;
+
+  const [allEvents, setAllEvents] = useState<FamilyEvent[]>([]);
+  const [members, setMembers] = useState<FamilyMember[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let active = true;
+    (async () => {
+      const [evtRes, memRes] = await Promise.all([
+        fetch("/api/events"),
+        fetch("/api/members"),
+      ]);
+      if (!active) return;
+      const evts = (await evtRes.json()) as FamilyEvent[];
+      setAllEvents(evts.sort((a, b) => a.year - b.year));
+      setMembers(await memRes.json());
+      setLoading(false);
+    })();
+    return () => { active = false; };
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-warm-50 flex items-center justify-center">
+        <div className="text-warm-400 animate-pulse text-lg">加载中...</div>
+      </div>
+    );
+  }
 
   const eventIndex = allEvents.findIndex((e) => e.id === eventId);
   const event = allEvents[eventIndex];

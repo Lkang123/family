@@ -1,16 +1,12 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import TimelineEvent from "@/components/TimelineEvent";
 import YearDivider from "@/components/YearDivider";
 import Footer from "@/components/Footer";
-import eventsData from "@/data/events.json";
-import membersData from "@/data/members.json";
 import type { FamilyEvent, FamilyMember } from "@/data/types";
-
-const events = eventsData as FamilyEvent[];
-const members = membersData as FamilyMember[];
 
 // 按年份分组
 function groupByYear(events: FamilyEvent[]) {
@@ -30,6 +26,33 @@ function groupByYear(events: FamilyEvent[]) {
 }
 
 export default function Home() {
+  const [events, setEvents] = useState<FamilyEvent[]>([]);
+  const [members, setMembers] = useState<FamilyMember[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let active = true;
+    (async () => {
+      const [evtRes, memRes] = await Promise.all([
+        fetch("/api/events"),
+        fetch("/api/members"),
+      ]);
+      if (!active) return;
+      setEvents(await evtRes.json());
+      setMembers(await memRes.json());
+      setLoading(false);
+    })();
+    return () => { active = false; };
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-warm-50 flex items-center justify-center">
+        <div className="text-warm-400 animate-pulse text-lg">加载中...</div>
+      </div>
+    );
+  }
+
   const yearGroups = groupByYear(events);
   let eventIndex = 0;
 
