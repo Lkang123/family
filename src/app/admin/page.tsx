@@ -78,7 +78,7 @@ export default function AdminLoginPage() {
         </form>
 
         <p className="text-center text-warm-300 text-xs mt-6">
-          默认密码: family2025（请在 .env.local 中修改）
+          仅限管理员访问
         </p>
       </div>
     </div>
